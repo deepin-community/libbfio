@@ -1,4 +1,19 @@
 #!/usr/bin/make -f
+# -*- makefile -*-
+# debian/rules file for libbfio
+# This file written by Pierre Chifflier
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+override_dh_clean:
+	dh_clean
+	find $(CURDIR) -name Makefile -delete
+	for filename in common/config.h common/stamp-h1 dpkg/changelog dpkg/copyright libtool po/Makefile.in po/POTFILES macosx/libbfio.pmdoc/*.xml;\
+	do rm -f $$filename; done
 
 %:
-	dh $@
+	dh $@  --with autoreconf
+
+override_dh_strip:
+	dh_strip -plibbfio1 --dbg-package=libbfio-dbg
