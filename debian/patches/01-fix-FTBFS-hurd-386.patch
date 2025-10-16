@@ -1,0 +1,85 @@
+Index: libbfio/libcpath/libcpath_path.c
+===================================================================
+--- libbfio.orig/libcpath/libcpath_path.c
++++ libbfio/libcpath/libcpath_path.c
+@@ -484,40 +484,12 @@ int libcpath_path_get_current_working_di
+ 
+ 		return( -1 );
+ 	}
+-	*current_working_directory_size = (size_t) PATH_MAX;
+-
+-	*current_working_directory = libcstring_narrow_string_allocate(
+-	                              *current_working_directory_size );
+ 
++	*current_working_directory = getcwd(
++					    NULL,
++					    0 );
+ 	if( *current_working_directory == NULL )
+ 	{
+-		libcerror_error_set(
+-		 error,
+-		 LIBCERROR_ERROR_DOMAIN_MEMORY,
+-		 LIBCERROR_MEMORY_ERROR_INSUFFICIENT,
+-		 "%s: unable to create current working directory.",
+-		 function );
+-
+-		goto on_error;
+-	}
+-	if( memory_set(
+-	     *current_working_directory,
+-	     0,
+-	     sizeof( char ) * *current_working_directory_size ) == NULL )
+-	{
+-		libcerror_error_set(
+-		 error,
+-		 LIBCERROR_ERROR_DOMAIN_MEMORY,
+-		 LIBCERROR_MEMORY_ERROR_SET_FAILED,
+-		 "%s: unable to clear current working directory.",
+-		 function );
+-
+-		goto on_error;
+-	}
+-	if( getcwd(
+-	     *current_working_directory,
+-	     *current_working_directory_size ) == NULL )
+-	{
+ 		libcerror_system_set_error(
+ 		 error,
+ 		 LIBCERROR_ERROR_DOMAIN_RUNTIME,
+@@ -528,6 +500,8 @@ int libcpath_path_get_current_working_di
+ 
+ 		goto on_error;
+ 	}
++	*current_working_directory_size = 1 + libcstring_narrow_string_length(
++									      *current_working_directory );
+ 	return( 1 );
+ 
+ on_error:
+@@ -3355,23 +3329,10 @@ int libcpath_path_get_current_working_di
+ 
+ 		return( -1 );
+ 	}
+-	narrow_current_working_directory = libcstring_narrow_string_allocate(
+-	                                    PATH_MAX );
+-
+-	if( narrow_current_working_directory == NULL )
+-	{
+-		libcerror_error_set(
+-		 error,
+-		 LIBCERROR_ERROR_DOMAIN_MEMORY,
+-		 LIBCERROR_MEMORY_ERROR_INSUFFICIENT,
+-		 "%s: unable to create narrow current working directory.",
+-		 function );
+-
+-		goto on_error;
+-	}
+-	if( getcwd(
+-	     narrow_current_working_directory,
+-	     PATH_MAX ) == NULL )
++	narrow_current_working_directory = getcwd(
++						  NULL,
++						  0 );
++	if( narrow_current_working_directory == NULL)
+ 	{
+ 		libcerror_system_set_error(
+ 		 error,

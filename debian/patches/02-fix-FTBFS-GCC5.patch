@@ -1,0 +1,19 @@
+Description: Change libuna to use GNU89 inline semantics for GCC 5
+ libuna as written relies on the GNU89 inline semantics. Workaround build
+ failure in GCC 5 with the -std=gnu89 option until it is changed upstream.
+ For more information see https://gcc.gnu.org/gcc-5/porting_to.html.
+Author: Linn Crosetto <linn@hp.com>
+Bug-Debian: https://bugs.debian.org/777938
+Index: libbfio-20140105/libuna/Makefile.am
+===================================================================
+--- libbfio-20140105.orig/libuna/Makefile.am
++++ libbfio-20140105/libuna/Makefile.am
+@@ -3,7 +3,7 @@ AM_CPPFLAGS = \
+ 	-I$(top_srcdir)/include \
+ 	-I$(top_srcdir)/common \
+ 	@LIBCSTRING_CPPFLAGS@ \
+-	@LIBCERROR_CPPFLAGS@
++	@LIBCERROR_CPPFLAGS@ -std=gnu89
+ 
+ noinst_LTLIBRARIES = libuna.la
+ 

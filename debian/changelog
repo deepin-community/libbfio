@@ -1,5 +1,75 @@
-template-repository (1.0-1) unstable; urgency=medium
+libbfio (20160108-1) unstable; urgency=medium
 
-  * Initial release
+  * Team upload
+  * New upstream version
+  * Add myself to Uploaders
+  * Update symbols
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Hilko Bengen <bengen@debian.org>  Sun, 24 Jan 2016 16:38:58 +0100
+
+libbfio (20150102-1) unstable; urgency=medium
+
+  * Team upload.
+  * Fixed watch file so that the tarballs with bundled extra libraries are
+    found.
+  * Imported Upstream version 20150102
+  * Refreshed 01-fix-FTBFS-hurd-386.patch
+
+ -- Hilko Bengen <bengen@debian.org>  Sat, 01 Aug 2015 15:00:30 +0200
+
+libbfio (20140105-5) unstable; urgency=medium
+
+  * Team upload.
+  * debian/patches/02-fix-FTBFS-GCC5.patch: added to fix a FTBFS over GCC-5.
+      Thanks to Linn Crosetto <linn@hp.com>. (Closes: #777938)
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Thu, 02 Jul 2015 22:36:01 -0300
+
+libbfio (20140105-4) unstable; urgency=medium
+
+  * Team upload.
+  * Upload to unstable.
+  * Bump Standards-Version to 3.9.6.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Tue, 16 Jun 2015 23:38:18 -0300
+
+libbfio (20140105-3) experimental; urgency=medium
+
+  * Team upload.
+  * debian/control:
+      - Fixed and updated the Vcs-* fields.
+      - Updated the Homepage field.
+  * debian/copyright: updated the Source field.
+  * debian/watch: updated to use the new upstream repository.
+
+ -- Joao Eriberto Mota Filho <eriberto@debian.org>  Fri, 06 Mar 2015 07:52:23 -0300
+
+libbfio (20140105-2) unstable; urgency=medium
+
+  * Fix FTBFS on hurd-386 (Closes: #754792)
+    Thanks to Svante Signell for the patch.
+
+ -- Pierre Chifflier <pollux@debian.org>  Wed, 27 Aug 2014 09:04:21 +0200
+
+libbfio (20140105-1) unstable; urgency=medium
+
+  * Imported Upstream version 20140105
+  * Use dh-autoreconf instead of autotools-dev (Closes: #735215)
+  * Update symbols file
+  * Bump Standards Version to 3.9.5
+
+ -- Pierre Chifflier <pollux@debian.org>  Thu, 21 Aug 2014 14:11:46 +0200
+
+libbfio (20130507-1) unstable; urgency=low
+
+  * Update watch file
+  * Imported Upstream version 20130507
+  * Update symbols file
+
+ -- Pierre Chifflier <pollux@debian.org>  Mon, 20 May 2013 17:53:09 +0200
+
+libbfio (20120425-1) unstable; urgency=low
+
+  * Initial release (Closes: #650842)
+
+ -- Pierre Chifflier <pollux@debian.org>  Sun, 03 Mar 2013 23:10:25 +0100
